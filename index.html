@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>요양보호사 급여 계산 · 카카오 공유</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Kakao SDK -->
+  <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+
+  <script>
+    // ★ 카카오 JavaScript 키 (이미 반영됨)
+    const DEFAULT_KAKAO_JS_KEY = "29c2802d8384d1cbccc8d8c807b86807";
+
+    document.addEventListener("DOMContentLoaded", function () {
+      if (!window.Kakao) {
+        alert("카카오 SDK 로딩 실패");
+        return;
+      }
+      if (!Kakao.isInitialized()) {
+        Kakao.init(DEFAULT_KAKAO_JS_KEY);
+      }
+    });
+
+    function sendKakao() {
+      Kakao.Share.sendDefault({
+        objectType: "text",
+        text: "요양보호사 급여 계산 결과입니다.",
+        link: {
+          mobileWebUrl: window.location.href,
+          webUrl: window.location.href
+        }
+      });
+    }
+  </script>
+</head>
+
+<body style="font-family: Arial; padding: 20px;">
+  <h2>요양보호사 급여 계산기 (테스트)</h2>
+
+  <p>카카오톡 공유 테스트용 페이지입니다.</p>
+
+  <button onclick="sendKakao()" style="font-size:18px;padding:10px 20px;">
+    카톡으로 보내기
+  </button>
+</body>
+</html>
